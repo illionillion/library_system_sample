@@ -31,7 +31,7 @@
 /*.pid
 
 # テーブル作成用のSQL
-!/contact_db.sql
+!/create-table.sql
 
 # 画像・PDF
 *.pdf

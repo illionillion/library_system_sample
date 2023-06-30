@@ -1,0 +1,46 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 9999:80
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./www/html:/var/www/html
+    depends_on:
+      - php
+    environment:
+      - DOCKER_ENV=true
+
+  php:
+    build: ./php
+    volumes:
+      - ./www/html:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - DOCKER_ENV=true
+
+  db:
+    platform: linux/x86_64
+    image: mysql:latest
+    ports:
+      - 13306:3306
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: 'php2023_234201'  # 作成するデータベース名
+      MYSQL_USER: 'user_234201'         # 作業ユーザー名→上記データベースの捜査権限をもつ
+      MYSQL_PASSWORD: '234201'          # 作業ユーザーのパスワード
+      MYSQL_ROOT_PASSWORD: 'password'   # rootユーザーのパスワード
+      # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db #mysqlサービス名を指定
+    ports:
+      - 8888:80
+    depends_on:
+      - db

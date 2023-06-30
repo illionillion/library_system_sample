@@ -1,3 +1,6 @@
+-- user_234201でログインする場合は、その前にrootでログインして権限を割り当てる必要がある
+ALTER USER 'user_234201'@'%' IDENTIFIED WITH mysql_native_password BY '234201';
+
 -- users
 CREATE TABLE users (
     user_id INT PRIMARY KEY,

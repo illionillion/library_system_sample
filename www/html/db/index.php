@@ -22,7 +22,7 @@ try {
     $pdo = new PDO($dsn, $username, $password, $options);
 
     // 接続成功時の処理
-    echo "データベースに接続しました。";
+    // echo "データベースに接続しました。";
 } catch (PDOException $e) {
     // 接続失敗時の処理
     die("データベース接続エラー: " . $e->getMessage());

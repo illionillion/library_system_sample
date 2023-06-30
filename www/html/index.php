@@ -1,5 +1,7 @@
 <?php
 
+include './session_check/index.php'
+
 ?>
 
 <!DOCTYPE html>

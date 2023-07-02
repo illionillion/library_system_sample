@@ -34,33 +34,33 @@ try {
     $header->render();
     ?>
 
-    <main>
+    <main class="py-3">
         <div class="container">
-            <h1>ユーザー一覧</h1>
-        </div>
+            <h2>ユーザー一覧</h2>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ユーザーID</th>
-                    <th scope="col">ユーザー名</th>
-                    <th scope="col">電話番号</th>
-                    <th scope="col">メールアドレス</th>
-                    <th scope="col">権限</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($results as $row) : ?>
+            <table class="table">
+                <thead>
                     <tr>
-                        <td scope="row"><?= $row['user_id'] ?></td>
-                        <td><?= $row['user_name'] ?></td>
-                        <td><?= $row['phone_number'] ?></td>
-                        <td><?= $row['email'] ?></td>
-                        <td><?= $row['role'] == 0 ? '管理者' : '利用者' ?></td>
+                        <th scope="col">ユーザーID</th>
+                        <th scope="col">ユーザー名</th>
+                        <th scope="col">電話番号</th>
+                        <th scope="col">メールアドレス</th>
+                        <th scope="col">権限</th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($results as $row) : ?>
+                        <tr>
+                            <td scope="row"><?= $row['user_id'] ?></td>
+                            <td><?= $row['user_name'] ?></td>
+                            <td><?= $row['phone_number'] ?></td>
+                            <td><?= $row['email'] ?></td>
+                            <td><?= $row['role'] == 0 ? '管理者' : '利用者' ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 

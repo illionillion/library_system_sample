@@ -1,6 +1,6 @@
 <?php
-include '../session_check/index.php';
-include '../role_check/index.php';
+include '../api/session_check/index.php';
+include '../api/role_check/index.php';
 include '../components/header/component.php';
 
 ?>

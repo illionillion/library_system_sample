@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <h2>ログイン</h2>
-                <form action="/auth/index.php" method="POST">
+                <form action="/api/auth/index.php" method="POST">
                     <div class="form-group">
                         <label class="w-100" for="username">ユーザー名</label>
                         <input type="text" class="form-control" id="username" name="username" required>

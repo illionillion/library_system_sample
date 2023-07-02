@@ -1,6 +1,6 @@
 <?php
 
-include './session_check/index.php';
+include './api/session_check/index.php';
 include './components/importComponents.php';
 
 ?>

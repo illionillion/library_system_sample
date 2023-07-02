@@ -10,7 +10,7 @@ try {
     $category_result = $category_stmt->fetchAll();
 
 } catch (PDOException $e) {
-    die('失敗:'.$e->getMessage());
+    // die('失敗:'.$e->getMessage());
 }
 
 ?>

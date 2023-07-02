@@ -30,6 +30,6 @@ try {
 } catch (PDOException $e) {
     // エラーが発生した場合の処理
     header("Location: /user_add/?error=1");
-    die("従業員データの登録に失敗しました: " . $e->getMessage());
+    // die("従業員データの登録に失敗しました: " . $e->getMessage());
     exit;
 }

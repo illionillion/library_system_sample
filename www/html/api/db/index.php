@@ -25,5 +25,5 @@ try {
     // echo "データベースに接続しました。";
 } catch (PDOException $e) {
     // 接続失敗時の処理
-    die("データベース接続エラー: " . $e->getMessage());
+    // die("データベース接続エラー: " . $e->getMessage());
 }

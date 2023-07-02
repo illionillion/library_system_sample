@@ -11,7 +11,7 @@ try {
 
     $results = $stmt->fetchAll();
 } catch (PDOException $e) {
-    die("データの取得に失敗しました: " . $e->getMessage());
+    // die("データの取得に失敗しました: " . $e->getMessage());
 }
 
 ?>

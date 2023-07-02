@@ -43,5 +43,5 @@ try {
         exit;
     }
 } catch (PDOException $e) {
-    die("ログインに失敗しました: " . $e->getMessage());
+    // die("ログインに失敗しました: " . $e->getMessage());
 }

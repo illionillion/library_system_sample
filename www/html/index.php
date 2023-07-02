@@ -1,7 +1,12 @@
 <?php
 
 include './api/session_check/index.php';
+include './api/db/index.php';
 include './components/importComponents.php';
+
+$category_stmt = $pdo->prepare('select * from book_category');
+$category_stmt->execute();
+$category_result = $category_stmt->fetchAll();
 
 ?>
 
@@ -22,6 +27,33 @@ include './components/importComponents.php';
     $header = new HeaderComponent('蔵書システム');
     $header->render();
     ?>
+
+    <main class="py-3">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <h2>蔵書検索</h2>
+                    <form action="/book_search_result/" method="GET">
+                        <div class="form-group">
+                            <label class="w-100" for="bookname">蔵書名</label>
+                            <input type="text" class="form-control" id="bookname" name="bookname">
+                        </div>
+                        <div class="form-group">
+                            <label class="w-100" for="book_category">カテゴリー</label>
+                            <select id="book_category" name="book_category" class="form-control">
+                                <option value="">選択してください</option>
+                                <?php foreach ($category_result as $row) : ?>
+                                    <option value="<?= $row["book_category_id"] ?>"><?= htmlspecialchars($row["book_category_name"]) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="py-3"><button type="submit" class="btn btn-primary">検索</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>

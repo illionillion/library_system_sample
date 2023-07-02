@@ -6,7 +6,7 @@
             <a href="/">蔵書検索</a>
             <a href="/">蔵書登録</a>
             <a href="/">ユーザー登録</a>
-            <a href="/">ユーザー一覧</a>
+            <a href="/user_list/">ユーザー一覧</a>
         <?php endif ;?>
     </nav>
     <div class="login-logout">

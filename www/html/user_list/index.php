@@ -1,7 +1,18 @@
 <?php
 include '../api/session_check/index.php';
 include '../api/role_check/index.php';
+include '../api/db/index.php';
 include '../components/header/component.php';
+
+try {
+
+    $stmt = $pdo->prepare('select user_id, user_name, phone_number, email, role from users;');
+    $stmt->execute();
+
+    $results = $stmt->fetchAll();
+} catch (PDOException $e) {
+    die("データの取得に失敗しました: " . $e->getMessage());
+}
 
 ?>
 
@@ -22,6 +33,35 @@ include '../components/header/component.php';
     $header = new HeaderComponent('蔵書システム');
     $header->render();
     ?>
+
+    <main>
+        <div class="container">
+            <h1>ユーザー一覧</h1>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ユーザーID</th>
+                    <th scope="col">ユーザー名</th>
+                    <th scope="col">電話番号</th>
+                    <th scope="col">メールアドレス</th>
+                    <th scope="col">権限</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($results as $row) : ?>
+                    <tr>
+                        <td scope="row"><?= $row['user_id'] ?></td>
+                        <td><?= $row['user_name'] ?></td>
+                        <td><?= $row['phone_number'] ?></td>
+                        <td><?= $row['email'] ?></td>
+                        <td><?= $row['role'] == 0 ? '管理者' : '利用者' ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </main>
 </body>
 
 </html>

@@ -102,7 +102,7 @@ books {
     string book_name UK "蔵書名"
     int book_category FK "カテゴリー"
     timestamp regist_date "登録日"
-    int regist_id FK "登録者ID"
+    int regist_id FK "登録者ID（ユーザーID）"
 }
 
 book_category {

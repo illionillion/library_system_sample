@@ -52,9 +52,9 @@ try {
                     <?php foreach ($results as $row) : ?>
                         <tr>
                             <td scope="row"><?= $row['user_id'] ?></td>
-                            <td><?= $row['user_name'] ?></td>
-                            <td><?= $row['phone_number'] ?></td>
-                            <td><?= $row['email'] ?></td>
+                            <td><?= htmlspecialchars($row['user_name']) ?></td>
+                            <td><?= htmlspecialchars($row['phone_number']) ?></td>
+                            <td><?= htmlspecialchars($row['email']) ?></td>
                             <td><?= $row['role'] == 0 ? '管理者' : '利用者' ?></td>
                         </tr>
                     <?php endforeach; ?>

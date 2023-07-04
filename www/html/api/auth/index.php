@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // GETリクエストの場合の処理（直接アクセスされた場合）
 
     // 別のページにリダイレクト
-    header("Location: /");
+    header("Location: /~g234201/");
     exit;
 }
 
@@ -34,12 +34,12 @@ try {
         $_SESSION['role'] = $row['role'];
 
         // ログイン後のページにリダイレクト
-        header("Location: /");
+        header("Location: /~g234201/");
         exit;
     } else {
         // 認証失敗
         // ログインページにリダイレクト
-        header("Location: /login/?error=1");
+        header("Location: /~g234201/login/?error=1");
         exit;
     }
 } catch (PDOException $e) {

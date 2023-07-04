@@ -6,9 +6,13 @@ include '../components/header/component.php';
 
 if (isset($_GET['bookname']) && !empty($_GET['bookname'])) {
     $bookname = $_GET['bookname'];
+} else {
+    $bookname = '';
 }
 if (isset($_GET['book_category']) && !empty($_GET['book_category'])) {
     $book_category = $_GET['book_category'];
+} else {
+    $book_category = -1;
 }
 
 try {
@@ -33,6 +37,7 @@ try {
     $category_result = $category_stmt->fetchAll();
 
 
+    $category_name = '';
     foreach ($category_result as $row) {
         if ($row['book_category_id'] == $book_category) {
             $category_name = $row['book_category_name'];
@@ -51,7 +56,7 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蔵書検索結果</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/~g234201/css/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
@@ -65,8 +70,8 @@ try {
     <main class="py-3">
         <div class="container">
             <h2>検索結果</h2>
-            <p><span>蔵書名</span><?= $bookname ? $bookname : 'なし' ?></p>
-            <p><span>カテゴリー</span><?= $category_name ? $category_name : 'なし' ?></p>
+            <p><span>蔵書名</span><?= $bookname != '' ? $bookname : 'なし' ?></p>
+            <p><span>カテゴリー</span><?= $category_name != '' ? $category_name : 'なし' ?></p>
 
             <table class="table">
                 <thead>

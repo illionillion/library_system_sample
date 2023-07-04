@@ -7,5 +7,5 @@ session_start();
 session_destroy();
 
 // ログアウト後のリダイレクト先に適切なページを指定する
-header("Location: /login/");
+header("Location: /~g234201/login/");
 exit;

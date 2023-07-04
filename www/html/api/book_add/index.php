@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // GETリクエストの場合の処理（直接アクセスされた場合）
 
     // 別のページにリダイレクト
-    header("Location: /");
+    header("Location: /~g234201/");
     exit;
 }
 
@@ -22,8 +22,8 @@ try {
 
     // 成功した場合の処理（例: メッセージを表示）
     // echo "従業員データを正常に登録しました。";
-    header("Location: /book_add/");
+    header("Location: /~g234201/book_add/");
 } catch (PDOException $e) {
     // echo $e->getMessage();
-    header("Location: /book_add/?error=1");
+    header("Location: /~g234201/book_add/?error=1");
 }

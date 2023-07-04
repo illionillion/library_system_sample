@@ -17,7 +17,7 @@ $category_result = $category_stmt->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>蔵書システム</title>
-    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/~g234201//css/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
@@ -33,7 +33,7 @@ $category_result = $category_stmt->fetchAll();
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h2>蔵書検索</h2>
-                    <form action="/book_search_result/" method="GET">
+                    <form action="/~g234201/book_search_result/" method="GET">
                         <div class="form-group">
                             <label class="w-100" for="bookname">蔵書名</label>
                             <input type="text" class="form-control" id="bookname" name="bookname">

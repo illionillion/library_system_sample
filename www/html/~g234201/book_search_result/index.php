@@ -18,13 +18,29 @@ if (isset($_GET['book_category']) && !empty($_GET['book_category'])) {
 try {
     $sql = "SELECT b.book_id, b.book_name, bc.book_category_name, b.regist_date
             FROM books b
-            JOIN book_category bc ON b.book_category = bc.book_category_id
-            WHERE b.book_name LIKE CONCAT('%', :keyword_name, '%') OR b.book_category = :keyword_category";
+            JOIN book_category bc ON b.book_category = bc.book_category_id";
+
+    $conditions = [];
+    if (!empty($bookname)) {
+        $conditions[] = "b.book_name LIKE CONCAT('%', :keyword_name, '%')";
+    }
+    if ($book_category != -1) {
+        $conditions[] = "b.book_category = :keyword_category";
+    }
+
+    if (!empty($conditions)) {
+        $sql .= " WHERE " . implode(" OR ", $conditions);
+    }
+
     $stmt = $pdo->prepare($sql);
 
     // プレースホルダーに値をバインドする
-    $stmt->bindValue(':keyword_name', $bookname, PDO::PARAM_STR);
-    $stmt->bindValue(':keyword_category', $book_category, PDO::PARAM_INT);
+    if (!empty($bookname)) {
+        $stmt->bindValue(':keyword_name', $bookname, PDO::PARAM_STR);
+    }
+    if ($book_category != -1) {
+        $stmt->bindValue(':keyword_category', $book_category, PDO::PARAM_INT);
+    }
 
     // クエリを実行
     $stmt->execute();
@@ -36,7 +52,6 @@ try {
     $category_stmt->execute();
     $category_result = $category_stmt->fetchAll();
 
-
     $category_name = '';
     foreach ($category_result as $row) {
         if ($row['book_category_id'] == $book_category) {
@@ -46,6 +61,7 @@ try {
 } catch (PDOException $e) {
     // echo $e->getMessage();
 }
+
 
 ?>
 

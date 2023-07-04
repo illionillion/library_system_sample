@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // GETリクエストの場合の処理（直接アクセスされた場合）
 
     // 別のページにリダイレクト
-    header("Location: /");
+    header("Location: /~g234201/");
     exit;
 }
 
@@ -25,11 +25,11 @@ try {
 
     // 成功した場合の処理（例: メッセージを表示）
     // echo "従業員データを正常に登録しました。";
-    header("Location: /user_add/");
+    header("Location: /~g234201/user_add/");
     exit;
 } catch (PDOException $e) {
     // エラーが発生した場合の処理
-    header("Location: /user_add/?error=1");
+    header("Location: /~g234201/user_add/?error=1");
     // die("従業員データの登録に失敗しました: " . $e->getMessage());
     exit;
 }

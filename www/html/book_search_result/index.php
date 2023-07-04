@@ -12,15 +12,15 @@ if (isset($_GET['book_category']) && !empty($_GET['book_category'])) {
 }
 
 try {
-    $sql = "SELECT b.book_id, b.book_name, bc.book_category_id, bc.book_category_name, b.regist_date
+    $sql = "SELECT b.book_id, b.book_name, bc.book_category_name, b.regist_date
             FROM books b
             JOIN book_category bc ON b.book_category = bc.book_category_id
-            WHERE b.book_name LIKE :keyword_name AND b.book_category LIKE :keyword_category";
+            WHERE b.book_name LIKE CONCAT('%', :keyword_name, '%') OR b.book_category = :keyword_category";
     $stmt = $pdo->prepare($sql);
 
     // プレースホルダーに値をバインドする
-    $stmt->bindValue(':keyword_name', "%$bookname%", PDO::PARAM_STR);
-    $stmt->bindValue(':keyword_category', "%$book_category%", PDO::PARAM_STR);
+    $stmt->bindValue(':keyword_name', $bookname, PDO::PARAM_STR);
+    $stmt->bindValue(':keyword_category', $book_category, PDO::PARAM_INT);
 
     // クエリを実行
     $stmt->execute();
@@ -34,13 +34,12 @@ try {
 
 
     foreach ($category_result as $row) {
-        if($row['book_category_id'] == $book_category) {
+        if ($row['book_category_id'] == $book_category) {
             $category_name = $row['book_category_name'];
         }
     }
-
 } catch (PDOException $e) {
-
+    // echo $e->getMessage();
 }
 
 ?>
@@ -79,17 +78,18 @@ try {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if(!$results) : ?>
+                    <?php if (!$results) : ?>
                         <div>該当なし</div>
+                    <?php else: ?>
+                        <?php foreach ($results as $row) : ?>
+                            <tr>
+                                <td scope="row"><?= $row['book_id'] ?></td>
+                                <td><?= htmlspecialchars($row['book_name']) ?></td>
+                                <td><?= htmlspecialchars($row['book_category_name']) ?></td>
+                                <td><?= htmlspecialchars($row['regist_date']) ?></td>
+                            </tr>
+                        <?php endforeach; ?>
                     <?php endif; ?>
-                    <?php foreach ($results as $row) : ?>
-                        <tr>
-                            <td scope="row"><?= $row['book_id'] ?></td>
-                            <td><?= htmlspecialchars($row['book_name']) ?></td>
-                            <td><?= htmlspecialchars($row['book_category_name']) ?></td>
-                            <td><?= htmlspecialchars($row['regist_date']) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

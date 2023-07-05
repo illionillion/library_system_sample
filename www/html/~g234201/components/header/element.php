@@ -7,6 +7,7 @@
             <a href="/~g234201/book_add/">蔵書登録</a>
             <a href="/~g234201/user_add/">ユーザー登録</a>
             <a href="/~g234201/user_list/">ユーザー一覧</a>
+            <a href="/~g234201/login_history/">ログイン履歴</a>
         <?php endif ;?>
     </nav>
     <div class="login-logout">

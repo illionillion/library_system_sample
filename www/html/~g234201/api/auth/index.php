@@ -1,7 +1,7 @@
 <?php
 
-// include '/var/www/html/db/index.php';
 include '../db/index.php';
+include '../write_login_history/index.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // GETリクエストの場合の処理（直接アクセスされた場合）
@@ -32,6 +32,8 @@ try {
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['user_name'] = $row['user_name'];
         $_SESSION['role'] = $row['role'];
+
+        write_login_history($_SESSION['user_id'], $_SESSION['user_name'], 'login');
 
         // ログイン後のページにリダイレクト
         header("Location: /~g234201/");

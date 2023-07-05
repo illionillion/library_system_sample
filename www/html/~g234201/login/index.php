@@ -1,3 +1,17 @@
+<?php
+
+// セッションの開始
+if(!isset($_SESSION)){ session_start(); }
+
+// セッションにuser_idが存在するかチェック
+if (isset($_SESSION['user_id'])) {
+    // セッションがある場合はloginからリダイレクト
+    header("Location: /~g234201/");
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 

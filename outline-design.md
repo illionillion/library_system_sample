@@ -52,7 +52,7 @@
 
 ```mermaid
 
-flowchart TD
+flowchart LR
 
 subgraph ログイン
     a1[ログイン画面]-->a2{認証}

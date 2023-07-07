@@ -50,7 +50,7 @@
 ### 画面遷移図
 
 
-```:mermaid
+```mermaid
 
 flowchart TD
 
@@ -84,7 +84,7 @@ end
 
 ### ER図
 
-```:mermaid
+```mermaid
 
 erDiagram
 

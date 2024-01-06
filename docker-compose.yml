@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    container_name: web
     image: nginx:latest
     ports:
       - 9999:80
@@ -13,6 +14,7 @@ services:
       - DOCKER_ENV=true
 
   php:
+    container_name: php
     build: ./php
     volumes:
       - ./www/html:/var/www/html
@@ -22,6 +24,7 @@ services:
       - DOCKER_ENV=true
 
   db:
+    container_name: db
     platform: linux/x86_64
     image: mysql:latest
     ports:
@@ -37,6 +40,7 @@ services:
       # MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
 
   phpmyadmin:
+    container_name: admin
     image: phpmyadmin/phpmyadmin:latest
     environment:
       - PMA_ARBITRARY=1

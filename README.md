@@ -18,12 +18,6 @@ docker compose up -d --build
 
 `/www/html/~g234201/`内のファイルを`htdocs`にコピー
 
-### データベース設定
-
-MySQLにrootでログインして[create-table.sql](./create-table.sql)内のコードをコピーして貼り付けて実行
-
-Dockerの場合はMySQLのコンテナに入ってからログインする
-
 ## システム構成
 
 ```mermaid

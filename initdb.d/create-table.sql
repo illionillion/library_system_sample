@@ -21,7 +21,7 @@ CREATE TABLE book_category (
 );
 
 INSERT INTO book_category (book_category_name)
-VALUES ('A'), ('B');
+VALUES ('技術書'), ('ビジネス'), ('コミック'), ('小説');
 
 -- 蔵書
 CREATE TABLE books (
@@ -33,3 +33,6 @@ CREATE TABLE books (
     FOREIGN KEY (book_category) REFERENCES book_category(book_category_id),
     FOREIGN KEY (regist_id) REFERENCES users(user_id)
 );
+
+INSERT INTO books (book_name, book_category, regist_date, regist_id)
+VALUES ('優しいJavaScript', 1, now(), 1), ('経営マスター', 2, now(), 1), ('Docker対全集', 1, now(), 1), ('DRAGON BALL', 3, now(), 1), ('神様のカルテ', 4, now(), 1);

@@ -8,7 +8,6 @@
 /node_modules
 /log
 /cache
-/mysql
 
 # composer.lock ファイルは必要です
 !/composer.lock
@@ -31,7 +30,7 @@
 /*.pid
 
 # テーブル作成用のSQL
-!/create-table.sql
+!/initdb.d/create-table.sql
 
 # 画像・PDF
 *.pdf

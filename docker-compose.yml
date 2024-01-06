@@ -27,7 +27,8 @@ services:
     ports:
       - 13306:3306
     volumes:
-      - ./mysql/data:/var/lib/mysql
+      - ./initdb.d:/docker-entrypoint-initdb.d # DBの初期データ
+      - ./mysql/my.cnf:/etc/mysql/conf.d/my.cnf # bashで日本語文字化けする問題の解決
     environment:
       MYSQL_DATABASE: 'php2023_234201'  # 作成するデータベース名
       MYSQL_USER: 'user_234201'         # 作業ユーザー名→上記データベースの捜査権限をもつ

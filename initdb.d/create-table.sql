@@ -1,6 +1,9 @@
 -- user_234201でログインする場合は、その前にrootでログインして権限を割り当てる必要がある
 ALTER USER 'user_234201'@'%' IDENTIFIED WITH mysql_native_password BY '234201';
 
+-- Windows環境で文字化け表示のために必要
+SET CHARACTER SET utf8mb4;
+
 -- users
 CREATE TABLE users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
